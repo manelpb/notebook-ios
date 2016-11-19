@@ -15,6 +15,9 @@
 		14D2EBAD1DD7C6D7001AA788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14D2EBAB1DD7C6D7001AA788 /* Main.storyboard */; };
 		14D2EBAF1DD7C6D7001AA788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14D2EBAE1DD7C6D7001AA788 /* Assets.xcassets */; };
 		14D2EBB21DD7C6D7001AA788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14D2EBB01DD7C6D7001AA788 /* LaunchScreen.storyboard */; };
+		14D2EBBB1DD7C6F3001AA788 /* Notebook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14D2EBB91DD7C6F3001AA788 /* Notebook.xcdatamodeld */; };
+		14D2EBD71DD91C90001AA788 /* Notes+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D2EBD41DD91C90001AA788 /* Notes+CoreDataClass.m */; };
+		14D2EBD81DD91C90001AA788 /* Notes+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D2EBD61DD91C90001AA788 /* Notes+CoreDataProperties.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,11 @@
 		14D2EBAE1DD7C6D7001AA788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14D2EBB11DD7C6D7001AA788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14D2EBB31DD7C6D7001AA788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14D2EBBA1DD7C6F3001AA788 /* Notebook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notebook.xcdatamodel; sourceTree = "<group>"; };
+		14D2EBD31DD91C90001AA788 /* Notes+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Notes+CoreDataClass.h"; sourceTree = "<group>"; };
+		14D2EBD41DD91C90001AA788 /* Notes+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Notes+CoreDataClass.m"; sourceTree = "<group>"; };
+		14D2EBD51DD91C90001AA788 /* Notes+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Notes+CoreDataProperties.h"; sourceTree = "<group>"; };
+		14D2EBD61DD91C90001AA788 /* Notes+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Notes+CoreDataProperties.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +56,10 @@
 		14D2EB901DD7C6D7001AA788 = {
 			isa = PBXGroup;
 			children = (
+				14D2EBD31DD91C90001AA788 /* Notes+CoreDataClass.h */,
+				14D2EBD41DD91C90001AA788 /* Notes+CoreDataClass.m */,
+				14D2EBD51DD91C90001AA788 /* Notes+CoreDataProperties.h */,
+				14D2EBD61DD91C90001AA788 /* Notes+CoreDataProperties.m */,
 				14D2EB9B1DD7C6D7001AA788 /* Notebook */,
 				14D2EB9A1DD7C6D7001AA788 /* Products */,
 			);
@@ -77,6 +89,7 @@
 				14D2EBB01DD7C6D7001AA788 /* LaunchScreen.storyboard */,
 				14D2EBB31DD7C6D7001AA788 /* Info.plist */,
 				14D2EB9C1DD7C6D7001AA788 /* Supporting Files */,
+				14D2EBB91DD7C6F3001AA788 /* Notebook.xcdatamodeld */,
 			);
 			path = Notebook;
 			sourceTree = "<group>";
@@ -120,6 +133,7 @@
 				TargetAttributes = {
 					14D2EB981DD7C6D7001AA788 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -160,10 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14D2EBD71DD91C90001AA788 /* Notes+CoreDataClass.m in Sources */,
+				14D2EBD81DD91C90001AA788 /* Notes+CoreDataProperties.m in Sources */,
 				14D2EBA71DD7C6D7001AA788 /* DataViewController.m in Sources */,
 				14D2EBA11DD7C6D7001AA788 /* AppDelegate.m in Sources */,
 				14D2EBAA1DD7C6D7001AA788 /* ModelController.m in Sources */,
 				14D2EB9E1DD7C6D7001AA788 /* main.m in Sources */,
+				14D2EBBB1DD7C6F3001AA788 /* Notebook.xcdatamodeld in Sources */,
 				14D2EBA41DD7C6D7001AA788 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,10 +299,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Notebook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.on.conestogac.Notebook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Notebook-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -293,10 +314,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Notebook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.on.conestogac.Notebook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Notebook-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -321,6 +345,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		14D2EBB91DD7C6F3001AA788 /* Notebook.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				14D2EBBA1DD7C6F3001AA788 /* Notebook.xcdatamodel */,
+			);
+			currentVersion = 14D2EBBA1DD7C6F3001AA788 /* Notebook.xcdatamodel */;
+			path = Notebook.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 14D2EB911DD7C6D7001AA788 /* Project object */;
 }

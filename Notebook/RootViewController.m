@@ -28,6 +28,7 @@
 
     DataViewController *startingViewController = [self.modelController viewControllerAtIndex:0 storyboard:self.storyboard];
     NSArray *viewControllers = @[startingViewController];
+    
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 
     self.pageViewController.dataSource = self.modelController;
@@ -43,6 +44,7 @@
     self.pageViewController.view.frame = pageViewRect;
 
     [self.pageViewController didMoveToParentViewController:self];
+    _currentIndex = 0;
 }
 
 
@@ -52,12 +54,62 @@
 }
 
 
+/*
+ * just moves to the last page based on the array of records loaded on the database
+ */
+- (void) moveToLastPage {
+    UIViewController *currentViewController = [self.modelController viewControllerAtIndex:self.modelController.records.count-1 storyboard:self.storyboard];
+    NSArray *viewControllers = @[currentViewController];
+    
+    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+}
+
+/*
+ * checks if i still have pages and move to the following
+ */
+- (void) moveToNextPage {
+    DataViewController *currentViewController = self.pageViewController.viewControllers[0];
+    
+    UIViewController *nextViewController = [self.modelController pageViewController:self.pageViewController viewControllerAfterViewController:currentViewController];
+    
+    if(nextViewController != nil) {
+        NSArray *viewControllers = @[nextViewController];
+        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    }
+}
+
+/*
+ * checks if i still have pages and move to the previous
+ */
+- (void) moveToPreviousPage {
+    DataViewController *currentViewController = self.pageViewController.viewControllers[0];
+    
+    UIViewController *previousViewController = [self.modelController pageViewController:self.pageViewController viewControllerBeforeViewController:currentViewController];
+    
+    if(previousViewController != nil) {
+        NSArray *viewControllers = @[previousViewController];
+        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+    }
+}
+
+/*
+ * just moves to the first element of the array of records
+ */
+- (void) moveToFirstPage {
+    UIViewController *currentViewController = [self.modelController viewControllerAtIndex:0 storyboard:self.storyboard];
+    NSArray *viewControllers = @[currentViewController];
+    
+    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+}
+
 - (ModelController *)modelController {
     // Return the model controller object, creating it if necessary.
     // In more complex implementations, the model controller may be passed to the view controller.
     if (!_modelController) {
         _modelController = [[ModelController alloc] init];
+        _modelController.rootView = self;
     }
+    
     return _modelController;
 }
 
